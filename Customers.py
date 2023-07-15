@@ -2,27 +2,12 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-import pandas as pd
-import seaborn as sns
-from pywaffle import Waffle
 from typing import List, Tuple
 from datetime import date
 import io
 import folium
-import pydeck as pdk
-import matplotlib.patches as mpatches
-import pandas as pd
-# from docx import Document
-# from docx.shared import Pt
-# from docx.enum.text import WD_PARAGRAPH_ALIGNMENT
-# # from docx.enum.table import WD_CELL_VERTICAL_ALIGNMENT, WD_ALIGN_VERTICAL, WD_ALIGN_VERTICAL_EVEN, WD_ALIGN_VERTICAL_TOP
-# # from docx.enum.section import WD_ORIENT
-# from docx.shared import Inches
-# from docx.enum.text import WD_BREAK
 
 ## customize the layout of matplotlib.pyplot plots
-# import matplotlib as mpl
-# from cycler import cycler
 plt.style.use('ggplot')
 ## Set the width to the full screen
 st.set_page_config(layout="wide")
