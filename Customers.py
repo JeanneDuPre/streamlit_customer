@@ -20,6 +20,18 @@ def get_data():
     df = df.drop('Unnamed: 0', axis=1)
     return df
 
+# @st.cache
+# def convert_df(df):
+#     # IMPORTANT: Cache the conversion to prevent computation on every rerun
+#     return df.to_csv().encode('utf-8')
+
+# csv = convert_df(my_large_df)
+# st.download_button(
+#     label="Download data as CSV",
+#     data=csv,
+#     file_name='large_df.csv',
+#     mime='text/csv',
+# )
 # DOWNLOAD the dataset filtered_data
 @st.cache_data
 def get_filtered_data (df, selected_month, selected_countries, selected_statuses):
