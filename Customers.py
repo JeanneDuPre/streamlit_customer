@@ -13,7 +13,7 @@ plt.style.use('ggplot')
 st.set_page_config(layout="wide")
 
 # DOWNLOAD the dataset df
-@st.cache
+# @st.cache
 def get_data(): 
     df= pd.read_csv('bicycle_dataset.csv')
     # Drop the column 'Unnamed: 0'
@@ -33,7 +33,7 @@ def get_data():
 #     mime='text/csv',
 # )
 # DOWNLOAD the dataset filtered_data
-@st.cache
+# @st.cache
 def get_filtered_data (df, selected_month, selected_countries, selected_statuses):
     filtered_data = df.copy()
     if selected_statuses == 'all' and selected_month != 'all' and selected_countries != 'all': 
@@ -76,7 +76,7 @@ def get_previous_month(selected_month):
     return previous_month
 # Dataset for maps
 ## overview
-@st.cache
+# @st.cache
 def get_data_map_overview(filtered_data):
     filtered_data = filtered_data[['lat', 'long']]
     # Rename the "long" column to "lon"
@@ -85,7 +85,7 @@ def get_data_map_overview(filtered_data):
 
 
 ## DOWNLOAD the selected dataset in csv
-@st.cache
+# @st.cache
 def download_filtered_data_csv(df, selected_month, selected_countries, selected_statuses):
     filtered_data = get_filtered_data (df, selected_month, selected_countries, selected_statuses)
     # # Dropping rows with 'all' values in specified columns
