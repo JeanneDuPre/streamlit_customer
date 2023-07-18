@@ -96,20 +96,20 @@ def download_filtered_data_csv(df, selected_month, selected_countries, selected_
     return [csv, file_name_csv]
 
 ## DOWNLOAD the selected dataset in excel
-@st.cache
-def download_filtered_data_excel(df, selected_month, selected_countries, selected_statuses):
-    filtered_data = get_filtered_data (df, selected_month, selected_countries, selected_statuses)
-    # # Dropping rows with 'all' values in specified columns
-    # filtered_data = filtered_data[(filtered_data['month'] != 'all') & (filtered_data['state'] != 'all') & (filtered_data['order_status'] != 'all')]
-    current_date = date.today().strftime("%Y-%m-%d")
-    file_name_excel = f"BicycleStoreAustralia2017_month_{selected_month}_state_{selected_countries}_order_status_{selected_statuses}_saved_{current_date}.xlsx"
-    # Save the filtered data to an Excel file
-    filtered_data.to_excel(file_name_excel, index=False)
-    # Read the Excel data as bytes
-    excel_bytes = io.BytesIO()
-    with pd.ExcelWriter(excel_bytes, engine='xlsxwriter') as writer:
-        filtered_data.to_excel(writer, index=False)
-    return [excel_bytes.getvalue(), file_name_excel]
+# @st.cache
+# def download_filtered_data_excel(df, selected_month, selected_countries, selected_statuses):
+#     filtered_data = get_filtered_data (df, selected_month, selected_countries, selected_statuses)
+#     # # Dropping rows with 'all' values in specified columns
+#     # filtered_data = filtered_data[(filtered_data['month'] != 'all') & (filtered_data['state'] != 'all') & (filtered_data['order_status'] != 'all')]
+#     current_date = date.today().strftime("%Y-%m-%d")
+#     file_name_excel = f"BicycleStoreAustralia2017_month_{selected_month}_state_{selected_countries}_order_status_{selected_statuses}_saved_{current_date}.xlsx"
+#     # Save the filtered data to an Excel file
+#     filtered_data.to_excel(file_name_excel, index=False)
+#     # Read the Excel data as bytes
+#     excel_bytes = io.BytesIO()
+#     with pd.ExcelWriter(excel_bytes, engine='xlsxwriter') as writer:
+#         filtered_data.to_excel(writer, index=False)
+#     return [excel_bytes.getvalue(), file_name_excel]
 
 ###########KPI metrics#############
 # Create KPI metrics 
@@ -414,7 +414,7 @@ def main():
 ###METRICS
     tab_metrics = tabs[0]
     csv, file_name_csv = download_filtered_data_csv(filtered_data, selected_month, selected_countries, selected_statuses)
-    excel_bytes, file_name_excel = download_filtered_data_excel(filtered_data, selected_month, selected_countries, selected_statuses)
+    # excel_bytes, file_name_excel = download_filtered_data_excel(filtered_data, selected_month, selected_countries, selected_statuses)
     with tab_metrics:
         cols = st.columns(4)
         with cols[0]:
@@ -426,7 +426,7 @@ def main():
         with cols[3]:
             st.metric("Unique Customers", unique_customers, calculate_customers_previous(previous_data, unique_customers))
 
-        cols = st.columns(2)
+        cols = st.columns(1)
         with cols[0]: 
             st.download_button(
                 label="Download filtered data as CSV",
@@ -435,14 +435,14 @@ def main():
                 mime="text/csv",
                 key='download-csv'
                 )
-        with cols[1]:
-            st.download_button(
-                label="Download filtered data as Excel",
-                data=excel_bytes,
-                file_name=file_name_excel,
-                mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                key='download-excel'
-                ) 
+        # with cols[1]:
+        #     st.download_button(
+        #         label="Download filtered data as Excel",
+        #         data=excel_bytes,
+        #         file_name=file_name_excel,
+        #         mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        #         key='download-excel'
+        #         ) 
         cols = st.columns(1)
         with cols[0]: 
             st.table(filtered_data.head(10))
