@@ -6,6 +6,7 @@ from typing import List, Tuple
 from datetime import date
 import io
 import folium 
+from streamlit_folium import st_folium
 
 ## customize the layout of matplotlib.pyplot plots
 plt.style.use('ggplot')
@@ -513,15 +514,20 @@ def main():
     "Select the CLV score that you would like to display",
     ('All', 'Best CLV Score', '25 % - 50 % CLV Score', '50 % - 75 % CLV Score', 'Low CLV Score'))
             if chart == 'All':
-                st.components.v1.html(map_html, width= 800, height= 300)
+                st_folium(map_html, width=800)
+                # st.components.v1.html(map_html, width= 800, height= 300)
             if chart == 'Best CLV Score':
-                st.components.v1.html(map_html_difference_score_best, width= 800, height= 300)        
+                st_folium(map_html_difference_score_best, width=800)
+                # st.components.v1.html(map_html_difference_score_best, width= 800, height= 300)        
             if chart == '25 % - 50 % CLV Score':
-                st.components.v1.html(map_html_difference_score_average_orange, width= 800, height= 300)
+                st_folium(map_html_difference_score_average_orange, width=800)
+                # st.components.v1.html(map_html_difference_score_average_orange, width= 800, height= 300)
             if chart == '50 % - 75 % CLV Score':
-                st.components.v1.html(map_html_difference_score_average_yellow, width= 800, height= 300)
+                st_folium(map_html_difference_score_average_yellow, width=800)
+                # st.components.v1.html(map_html_difference_score_average_yellow, width= 800, height= 300)
             if chart == 'Low CLV Score':
-                st.components.v1.html(map_html_difference_score_low, width= 800, height= 300)
+                st_folium(map_html_difference_score_low, width=800)
+                # st.components.v1.html(map_html_difference_score_low, width= 800, height= 300)
             
 ###RFM   
     tab_rfm = tabs[4]
