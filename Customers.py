@@ -5,7 +5,7 @@ import numpy as np
 from typing import List, Tuple
 from datetime import date
 import io
-import folium 
+# import folium 
 from streamlit_folium import st_folium
 
 ## customize the layout of matplotlib.pyplot plots
