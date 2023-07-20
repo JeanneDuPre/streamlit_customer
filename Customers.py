@@ -241,11 +241,11 @@ def get_map_difference_score_all(df_1, df_2):
             color=color
         ).add_to(m)
     # call to render Folium map in Streamlit
-    st_data = st_folium(m, width=800)
+    # st_data = st_folium(m, width=800)
     # Convert the Folium map to HTML string
-    # map_html = m.get_root().render()
-    # return map_html
-    return st_data
+    map_html = m.get_root().render()
+    return map_html
+    # return st_data
 # MAP FOR GREEN CLV SCORE
 def get_map_difference_score_best(df_1, df_2):
     df_customers = df_1[["customer_id", "difference_score"]]
@@ -270,11 +270,11 @@ def get_map_difference_score_best(df_1, df_2):
                 color='green'
             ).add_to(m)
     # call to render Folium map in Streamlit
-    st_data = st_folium(m, width=800)
+    # st_data = st_folium(m, width=800)
     # Convert the Folium map to HTML string
-    # map_html = m.get_root().render()
-    # return map_html
-    return st_data
+    map_html = m.get_root().render()
+    return map_html
+    # return st_data
 # MAP FOR YELLOW CLV SCORE
 def get_map_difference_score_average_yellow(df_1, df_2):
     df_customers = df_1[["customer_id", "difference_score"]]
@@ -294,11 +294,11 @@ def get_map_difference_score_average_yellow(df_1, df_2):
                 color='yellow'
             ).add_to(m)
     # call to render Folium map in Streamlit
-    st_data = st_folium(m, width=800)
+    # st_data = st_folium(m, width=800)
     # Convert the Folium map to HTML string
-    # map_html = m.get_root().render()
-    # return map_html
-    return st_data
+    map_html = m.get_root().render()
+    return map_html
+    # return st_data
 # MAP FOR ORANGE CLV SCORE
 def get_map_difference_score_average_orange(df_1, df_2):
     df_customers = df_1[["customer_id", "difference_score"]]
@@ -318,11 +318,11 @@ def get_map_difference_score_average_orange(df_1, df_2):
                 color='orange'
             ).add_to(m)
     # call to render Folium map in Streamlit
-    st_data = st_folium(m, width=800)
+    # st_data = st_folium(m, width=800)
     # Convert the Folium map to HTML string
-    # map_html = m.get_root().render()
-    # return map_html
-    return st_data
+    map_html = m.get_root().render()
+    return map_html
+    # return st_data
 # MAP FOR RED CLV SCORE
 def get_map_difference_score_low(df_1, df_2):
     df_customers = df_1[["customer_id", "difference_score"]]
@@ -346,11 +346,11 @@ def get_map_difference_score_low(df_1, df_2):
                 color='red'
             ).add_to(m)
     # call to render Folium map in Streamlit
-    st_data = st_folium(m, width=800)
+    # st_data = st_folium(m, width=800)
     # Convert the Folium map to HTML string
-    # map_html = m.get_root().render()
-    # return map_html
-    return st_data
+    map_html = m.get_root().render()
+    return map_html
+    # return st_data
 
 
 ####CUSTOMERS new old reactive
