@@ -5,7 +5,6 @@ import numpy as np
 from typing import List, Tuple
 from datetime import date
 import io
-import folium
 
 ## customize the layout of matplotlib.pyplot plots
 plt.style.use('ggplot')
@@ -113,7 +112,7 @@ def download_filtered_data_csv(df, selected_month, selected_countries, selected_
 
 ###########KPI metrics#############
 # Create KPI metrics 
-def calculate_kpis(filtered_data) -> List[float]:
+def calculate_kpis(filtered_data):
     total_sales = filtered_data['list_price'].sum()
     sales_in_m = f"{total_sales / 1000000:.2f}M"
     total_orders = filtered_data['transaction_id'].nunique()
@@ -151,7 +150,7 @@ def calculate_customers_previous(previous_data, unique_customers):
 
 
 # Display sidebar and filters
-def display_sidebar(df: pd.DataFrame) -> Tuple[List[str], List[str], List[str]]:
+def display_sidebar(df):
     st.sidebar.header("Filters")
     # Modify the unique values for month, state, and order_status columns
     months = ['all'] + df['month'].unique().tolist()
@@ -342,15 +341,15 @@ def get_map_difference_score_low(df_1, df_2):
 
 
 ####CUSTOMERS new old reactive
-def calculate_customer_stats(data):
+def calculate_customer_stats(df):
     # Sort the data by month and customer_id
-    data.sort_values(['month', 'customer_id'], inplace=True)
+    df.sort_values(['month', 'customer_id'], inplace=True)
 
     # Create a new column 'previous_month' to store the previous month for each customer
-    data['previous_month'] = data.groupby('customer_id')['month'].shift()
+    df['previous_month'] = df.groupby('customer_id')['month'].shift()
 
     # Group the data by month
-    grouped_data = data.groupby('month')
+    grouped_data = df.groupby('month')
 
     new_customers_list = []
     reactive_customers_list = []
