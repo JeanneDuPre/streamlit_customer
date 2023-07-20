@@ -5,6 +5,7 @@ import numpy as np
 from typing import List, Tuple
 from datetime import date
 import io
+import folium 
 
 ## customize the layout of matplotlib.pyplot plots
 plt.style.use('ggplot')
